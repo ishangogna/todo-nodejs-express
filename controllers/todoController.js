@@ -6,7 +6,7 @@
 
 
 module.exports = function(app){
-    app.get('/',function(req,res){
-        res.send('Hello from Controller.');
+    app.get('/todo',function(req,res){
+        res.render('todo');
     });
 };
