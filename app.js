@@ -2,6 +2,7 @@
 //This will be an express application.
 
 var express = require('express');
+var todoController = require('./controllers/todoController')
 
 var app = express();
 
@@ -12,9 +13,11 @@ app.set('view engine', 'ejs')
 //This will be used on all routes.
 app.use(express.static('./public'))
 
-app.get('/',function(req,res){
-    res.send('To-Do List.');
-});
+
+
+//fire Controllers
+todoController(app);
+
 
 //listen to port
 app.listen(3000);
