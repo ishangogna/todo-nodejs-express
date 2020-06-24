@@ -12,16 +12,17 @@
 <body>
     <div class="todo-table">
         <h1>Add a To-Do!</h1>
-        <form>
+        <form method="POST" action="/todo">
             <input type="text" placeholder="Add an item.." name="todo">
             <input type="submit" value="submit">
         </form>
-
-        <!--List to store the tasks.-->
         <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
+            <% for(var i=0; i< data.length; i++ ) { %>
+                <li><%= data[i].todo %></li>
+
+            <% } %>
         </ul>
+
     </div>
 
 </body>
