@@ -72,6 +72,19 @@ module.exports = function(app){
        
 
         
-    })
+    });
+
+    //handing delete requests. 
+    //It takes the item from AJAX as the route parameter, replaces the hyphens back with spaces
+    //Queries DB and removes it, sends new data to Frontend.
+    app.delete('/todo/:item',function(req,res){
+        
+        Todo.find({todo:req.params.item.replace(/\-/g, " ")}).remove(function(err,data){
+            if (err) throw err;
+            res.json(data);
+        })
+           
+       })
+
     
 };

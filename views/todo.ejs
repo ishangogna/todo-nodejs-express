@@ -7,6 +7,25 @@
     <title>Todo List</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/assets/styles.css">
+
+    <script>
+        $(document).ready(function () {
+
+            $('li').on('click', function () {
+                var item = $(this).text().replace(/ /g, "-");
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/todo/' + item,
+                    success: function (data) {
+                        //do something with the data via front-end framework
+                        console.log(data);
+                        location.reload();
+                    }
+                });
+            });
+
+        });
+    </script>
 </head>
 
 <body>
@@ -18,7 +37,7 @@
         </form>
         <ul>
             <% for(var i=0; i< data.length; i++ ) { %>
-                <li><%= data[i].todo %></li>
+            <li><%= data[i].todo %></li>
 
             <% } %>
         </ul>
